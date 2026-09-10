@@ -20,7 +20,19 @@ Firecracker helps Codex find those disagreements, trace the decisions behind the
 
 ## Install
 
-Paste this into Codex with the built-in skill installer available:
+### Install from your terminal
+
+Run this in your terminal (requires Node.js and npm):
+
+```bash
+npx skills add Yangms30/firecracker -a codex -g
+```
+
+`-a codex` selects Codex; `-g` installs for your user across projects. Omit `-g` to install only in the current project. This uses the community [skills CLI](https://github.com/vercel-labs/skills#install-a-skill). Python 3 is also needed when running Firecracker's inventory helper.
+
+### Install through Codex chat
+
+Alternatively, paste the following request into the **Codex chat input**, with the built-in skill installer available. This is a prompt, not a terminal command:
 
 ```text
 $skill-installer Install Firecracker from https://github.com/Yangms30/firecracker.

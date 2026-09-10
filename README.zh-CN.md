@@ -20,7 +20,19 @@ Firecracker 帮助 Codex 发现这些分歧，追溯相关决策，并修正落�
 
 ## 安装
 
-在可使用内置技能安装器的 Codex 对话中粘贴：
+### 在终端中安装
+
+在终端中运行以下命令，需要 Node.js 和 npm：
+
+```bash
+npx skills add Yangms30/firecracker -a codex -g
+```
+
+`-a codex` 指定 Codex；`-g` 表示为当前用户安装，可在所有项目中使用。如需仅安装到当前项目，请省略 `-g`。此方式使用社区维护的 [skills CLI](https://github.com/vercel-labs/skills#install-a-skill)。运行 Firecracker 的文档清单脚本还需要 Python 3。
+
+### 通过 Codex 对话安装
+
+也可以在支持内置技能安装器的 **Codex 对话输入框**中粘贴以下请求。这是安装提示词，不是终端命令：
 
 ```text
 $skill-installer 从 https://github.com/Yangms30/firecracker 安装 Firecracker。

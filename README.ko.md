@@ -20,7 +20,19 @@ Firecracker는 Codex가 이런 불일치를 발견하고, 판단의 근거가 �
 
 ## 설치
 
-기본 스킬 설치기를 사용할 수 있는 Codex 대화창에 붙여넣으세요.
+### 터미널에서 설치
+
+터미널에서 실행하세요. Node.js와 npm이 필요합니다.
+
+```bash
+npx skills add Yangms30/firecracker -a codex -g
+```
+
+`-a codex`는 Codex를 선택하고, `-g`는 모든 프로젝트에서 사용할 수 있도록 사용자 범위에 설치합니다. 현재 프로젝트에만 설치하려면 `-g`를 빼세요. 커뮤니티 [skills CLI](https://github.com/vercel-labs/skills#install-a-skill)를 사용합니다. Firecracker의 문서 목록 수집 스크립트를 실행할 때는 Python 3도 필요합니다.
+
+### Codex 대화창에서 설치
+
+또는 기본 스킬 설치기를 사용할 수 있는 **Codex 대화 입력창**에 아래 요청을 붙여넣으세요. 터미널 명령어가 아닌 설치 요청문입니다.
 
 ```text
 $skill-installer https://github.com/Yangms30/firecracker 에서 Firecracker를 설치해줘.
