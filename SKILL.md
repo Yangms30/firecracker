@@ -1,6 +1,6 @@
 ---
 name: firecracker
-description: Audit and repair semantic drift across a project's documents; identify obsolete, duplicate, orphaned, or unrelated documentation and recommend cleanup. Use to check whether specs, plans, README, architecture, agent instructions, and runbooks follow current decisions, propagate an A-to-A+ change, or investigate whether coding agents consulted documents. Separate observed access evidence from inferred relevance. Not a prose-style or AI-writing detector.
+description: Audit semantic drift across project documents against accepted decisions and traced implementation; report findings, plan changes, and execute authorized repairs; identify obsolete, duplicate, orphaned, or unrelated documentation and recommend cleanup. Use to check whether specs, plans, README, architecture, agent instructions, and runbooks follow current decisions, propagate an A-to-A+ change, or investigate whether coding agents consulted documents. Separate observed access evidence from inferred relevance. Not a prose-style or AI-writing detector.
 ---
 
 # Firecracker
@@ -11,12 +11,13 @@ Find and repair documents that disagree about an applicable project decision. As
 
 ## Select scope and action
 
-- **Audit:** Check/review/inspect requests are read-only for the project. Keep working artifacts outside it unless a saved report there is requested.
-- **Align:** Fix/improve/synchronize requests authorize minimal evidence-backed documentation edits after inspection, followed by verification. Continue without asking again per file. A bare invocation defaults to audit.
-- **Change impact:** Trace a given change to affected documents and apply audit or align as requested. A desired change establishes target intent, not that implementation is complete.
-- **Cleanup and access:** Include document lifecycle assessment in whole-project audits. Investigate agent access when requested and evidence is available, using [references/lifecycle-and-access.md](references/lifecycle-and-access.md). Recommend deletion candidates; do not delete or move documents solely from general alignment authorization. If the user explicitly authorizes cleanup, perform the requested actions on concrete supported candidates without repeat permission.
+- **Audit (default):** Inspect the project, compare documents and relevant implementation, and report recommendations without editing project files. Keep working artifacts outside it unless a saved report there is requested.
+- **Plan:** After an audit, a general request to change/fix/align the documents produces a concrete change plan first. A plan-only request stops at the plan. State that this staged behavior comes from Firecracker; do not ask permission to investigate or prepare the plan.
+- **Execute:** When the user approves a plan or explicitly asks to plan and execute in one pass, complete the plan and authorized repairs without redundant confirmation. Existing execution authorization persists across turns. A generic follow-up “fix these” after a proposed concrete plan can approve that plan; do not loop back into planning.
+- **Change impact:** Trace an accepted change through affected documents and implementation, using audit, plan or execute as requested. Target intent does not establish shipped behavior.
+- **Cleanup and access:** Include lifecycle recommendations in whole-project audits. Use [references/lifecycle-and-access.md](references/lifecycle-and-access.md) for cleanup and requested access evidence. General documentation repair does not authorize deletion or relocation; explicit cleanup authorization for supported candidates does. Preserve existing authorization rather than asking again per file.
 
-Use the supplied project root. If no project is available, ask for its folder/archive; never substitute the skill's folder. Do not install frameworks, change application code or project policy, or publish changes as a side effect. Selectively read code/config/tests to corroborate current behavior where necessary and label that scope separately from document alignment.
+Use the supplied project root. If none is available, ask for its folder/archive; never substitute the skill folder. Do not change application code, install frameworks, alter project policy or publish changes as an audit side effect. Read code to establish implementation evidence, not to make it the universal authority. If code is unavailable or the user limits scope to documents, finish a document-only audit and state the missing implementation coverage.
 
 ## Inventory and coverage
 
@@ -34,13 +35,23 @@ Inspect the tree for unconventional documents, diagrams and configured document 
 
 Read all in-scope document content in bounded sections. Searches or summaries alone are not full review. Extract office/PDF tables and text with available format tools; mark unreadable diagrams or omitted sections as partial. A failed extraction is not an empty/consistent document. Maintain pending/reviewed/partial/blocked/excluded states. Keep outputs outside the scan root or explicitly exclude them from the scan.
 
+## Map the project and understand implementation
+
+Before cross-document conclusions, show a compact orientation: candidate document total by folder/type, major document directories and tentative roles, relevant source modules, and exclusions. Distinguish candidate counts from confirmed documentation and from completed review. Use filenames and folder paths as hypotheses; confirm or revise roles from content.
+
+Read [references/implementation-and-planning.md](references/implementation-and-planning.md) for implementation evidence and change planning. Establish entrypoints, major feature flows, API boundaries, persistence, asynchronous jobs, configuration and relevant tests. For each behavior documented by in-scope documents, trace the applicable path far enough to explain actual conditions and side effects; search results and function names alone are insufficient. Inspect caller and callee boundaries, not only the endpoint or UI.
+
+Maintain a document-topic-code map with source locations, revision, environment, evidence type and uninspected dependencies. Separate static code observations, executed test results and observed deployment behavior. A local checkout is not proof of what is deployed. For large projects, map the architecture first, then deepen relevant flows; list remaining flows and reduce confidence rather than claiming every code file was understood.
+
+Do not execute arbitrary project scripts just to discover behavior. Use relevant existing tests when safe and useful; otherwise retain explicit static-analysis limitations. Missing dependencies or inaccessible services do not prevent supported document findings.
+
 ## Recover decisions and document roles
 
 Classify each document or section by role, environment, release/time, and status: current normative guidance, observed behavior, accepted target, proposal, historical/superseded record, or external reference. Status inferred from a filename is tentative. Do not confuse old modification dates with obsolescence, or current audit access with past coding-agent access.
 
 Build a topic-specific decision map. Record subject, exact claim, modality (must/may/planned), conditions/exceptions, status, source path and section/line, and authority/supersession evidence. Follow existing project precedence by topic and scope. Never choose truth by majority, freshness, version number, or universal README/ADR/code hierarchy. Code establishes observed behavior, not whether behavior satisfies accepted intent.
 
-When two applicable authoritative sources conflict without resolution, report an unresolved decision and leave conflicting policy unchanged. Continue independent repairs. Never invent approval, decision IDs, timestamps or implementation completion. Reuse existing terminology and records rather than imposing metadata or a new documentation system.
+When two applicable authoritative sources conflict without resolution, report an unresolved decision and leave conflicting policy unchanged. Continue independent findings and, in execute mode, authorized repairs. Never invent approval, decision IDs, timestamps or implementation completion. Reuse existing terminology and records rather than imposing metadata or a new documentation system.
 
 ## Compare meaning and consequences
 
@@ -60,9 +71,15 @@ Seek counterevidence: environment differences, migration windows, future release
 
 For each finding record stable topic-based ID, category, severity, source excerpts/locations, scope, authority basis, consequence, repair and confidence with reasons. Separate confirmed errors, likely concerns and unresolved decisions. Do not manufacture numeric confidence or an overall alignment score.
 
+## Report findings, then plan changes
+
+Complete the audit report before a subsequent planning phase. Recommendations identify the issue, source document passages, applicable implementation evidence, accepted decision, consequence, confidence, proposed direction and any unresolved choice. Separate document defects, implementation defects, accepted future work and legitimate contextual differences. Do not rewrite a requirement to match an implementation bug.
+
+When planning is requested, produce file/section-level changes tied to finding IDs, the proposed replacement meaning, order/dependencies, preserved history, affected references, verification steps and blocked decisions. Include a proposed diff for clear small repairs where helpful. Describe code defects separately; a documentation plan does not authorize code changes. Prepare all reviewable work before any needed approval request, and name Firecracker's staged workflow as the reason for pausing. If execution is already authorized, proceed without another gate.
+
 ## Repair and recheck
 
-In align mode, patch clearly stale derived documents and necessary dependencies using established decisions. Preserve unrelated user changes and formatting. Change the smallest sufficient passages, references, examples and affected acceptance criteria. Avoid global string replacements for semantic decisions.
+In execute mode, patch clearly stale derived documents and necessary dependencies using established decisions. Preserve unrelated user changes and formatting. Change the smallest sufficient passages, references, examples and affected acceptance criteria. Avoid global string replacements for semantic decisions.
 
 Preserve historical records, release notes, valid future proposals and unique rationale. If current navigation misrepresents historical records as authoritative, fix navigation or add a justified superseded notice without rewriting history. For generated documentation locate its source and regeneration process; avoid hand edits unless established practice. Never weaken executable tests, governance or acceptance requirements to make an audit pass.
 
@@ -76,4 +93,4 @@ For branded reports or presentation assets, read [references/brand.md](reference
 
 Respond in the user's language. State inspected scope, actual repairs, unresolved decisions, and cleanup recommendations. Distinguish recommended actions from applied actions. Give concise findings with file/section evidence and the adopted decision. Report coverage counts, exclusions, pending/partial/blocked files, and whether implementation or access logs were checked. Provide an inspectable ledger/path list.
 
-Say **no confirmed issues within the reviewed scope**, never **all documents are guaranteed correct**. Inventory is not semantic review; complete coverage requires no pending/partial/blocked in-scope candidates. Agent read evidence is not evidence that its contents were understood or followed. Finish safe repairs before asking the smallest unresolved decision question.
+Say **no confirmed issues within the reviewed scope**, never **all documents are guaranteed correct**. Inventory is not semantic review; complete coverage requires no pending/partial/blocked in-scope candidates. Agent read evidence is not evidence that its contents were understood or followed. In execute mode, finish authorized independent repairs before asking the smallest unresolved decision question; in audit or plan mode, do not edit project files.

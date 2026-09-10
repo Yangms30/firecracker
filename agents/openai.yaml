@@ -1,9 +1,7 @@
 interface:
   display_name: Firecracker
   short_description: One shared spark for project docs, decisions, and cleanup
-  default_prompt: Use $firecracker to inspect this project’s documents, fix evidence-backed
-    inconsistencies, and recommend cleanup while distinguishing observed agent access
-    from unknown usage.
+  default_prompt: "Use $firecracker to map this project's documents and implementation, report evidence-backed inconsistencies and cleanup recommendations, and propose next steps without editing files."
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
   brand_color: '#FF6338'

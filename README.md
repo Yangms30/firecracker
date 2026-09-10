@@ -87,10 +87,11 @@ Do not edit files. Report evidence, cleanup candidates, and actual review covera
 
 ## Usage
 
-**Audit and repair**
+**Plan changes after the audit**
 
 ```text
-$firecracker Inspect the project documents and fix inconsistencies supported by clear evidence.
+$firecracker Based on the audit, prepare a file-by-file change plan with evidence and verification steps.
+Do not edit files yet.
 Recommend unnecessary documents for deletion; do not delete them.
 ```
 
@@ -110,12 +111,22 @@ Separately evaluate whether each document is still useful to the project.
 
 These are natural-language requests, not additional CLI subcommands. Ask in English, Korean or Chinese; reports follow your language and edits preserve each source document's language.
 
+**Execute a reviewed plan**
+
+```text
+$firecracker Apply the reviewed documentation plan and verify the results.
+Do not delete documents or change application code.
+```
+
 ## How it works
 
-1. **Map the documents.** Discover candidates, content hashes, exclusions and unreadable material.
-2. **Recover the decisions.** Compare claims by topic, environment, release and authority.
-3. **Find the drift.** Check contradictions and missing propagation against original passages.
-4. **Repair and verify.** Apply requested, evidence-backed edits, then compare the affected documents again.
+1. **Inventory.** Count document candidates and show folders, formats and exclusions.
+2. **Classify.** Infer roles from paths and names, then confirm them from content.
+3. **Understand implementation.** Map entrypoints and trace relevant features through APIs, jobs, storage, configuration and tests.
+4. **Compare.** Separate accepted decisions, current implementation, future targets and history; compare claims with source evidence.
+5. **Report.** Explain findings, cleanup suggestions and actual document/code coverage without editing files.
+6. **Plan.** When changes are requested, prepare file-level actions, dependencies and verification steps for review.
+7. **Execute and recheck.** Apply an approved plan and verify affected topics. An explicit request to plan and execute together does not require another confirmation.
 
 A report connects each finding to its evidence, applicable decision, proposed or applied action, and confidence. Cleanup recommendations also describe replacement documents and references that could be affected.
 
@@ -126,6 +137,7 @@ A report connects each finding to its evidence, applicable decision, proposed or
 | --- | --- |
 | [SKILL.md](SKILL.md) | Shared audit and repair instructions |
 | [scripts/inventory.py](scripts/inventory.py) | Candidate discovery and content hashes |
+| [references/implementation-and-planning.md](references/implementation-and-planning.md) | Implementation evidence and change planning |
 | [references/review-guide.md](references/review-guide.md) | Evidence, findings and coverage |
 | [references/lifecycle-and-access.md](references/lifecycle-and-access.md) | Cleanup and agent access rules |
 | [references/brand.md](references/brand.md) | Fireworks identity and presentation |
@@ -147,7 +159,7 @@ This inventories candidates only. Codex performs the semantic review. The scanne
 - A read event does not prove understanding or compliance. Missing logs mean unknown access.
 - Age, missing links or no observed reads alone never justify deletion.
 - Conflicting authoritative decisions remain unresolved until evidence or a decision resolves them.
-- An audit is read-only. Repair requests permit supported documentation edits; deletion needs explicit authorization.
+- An audit is read-only. A general change request leads to a concrete plan first; plan approval or an explicit plan-and-execute request authorizes repairs. Deletion needs explicit authorization.
 - Coverage is reported honestly, including unreadable files and unreviewed sections.
 
 ## Languages and design
