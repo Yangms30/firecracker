@@ -156,6 +156,14 @@ $firecracker Apply the reviewed documentation plan and verify the results.
 Do not delete documents or change application code.
 ```
 
+## Can an agent find the right document?
+
+Firecracker also reviews how documentation is organized: entrypoints, headings, repeated rules, topic links and placement. A short gateway can lead to detailed references; module-specific details may live beside the code or in a well-linked central docs directory.
+
+**Long does not automatically mean bad.** A cohesive reference can stay long. Splitting is recommended when mixed subjects, duplication or poor navigation make relevant guidance hard to find. Structural recommendations are reported separately from content contradictions. An approved restructuring plan maps sections to files and preserves links, meaning and agent-instruction scope.
+
+This draws on [OpenAI's harness engineering example](https://openai.com/index/harness-engineering/), without imposing its file layout or line counts. [Review criteria](references/document-structure.md).
+
 ## How it works
 
 1. **Inventory.** Count document candidates and show folders, formats and exclusions.

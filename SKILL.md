@@ -1,6 +1,6 @@
 ---
 name: firecracker
-description: Audit semantic drift across project documents against accepted decisions and traced implementation; report findings, plan changes, and execute authorized repairs; identify obsolete, duplicate, orphaned, or unrelated documentation and recommend cleanup. Use to check whether specs, plans, README, architecture, agent instructions, and runbooks follow current decisions, propagate an A-to-A+ change, or investigate whether coding agents consulted documents. Separate observed access evidence from inferred relevance. Not a prose-style or AI-writing detector.
+description: Audit semantic drift across project documents against accepted decisions and traced implementation; report findings, plan changes, and execute authorized repairs; assess document structure, navigation and progressive disclosure; identify obsolete, duplicate, orphaned, or unrelated documentation and recommend cleanup. Use to check whether specs, plans, README, architecture, agent instructions, and runbooks follow current decisions, propagate an A-to-A+ change, or investigate whether coding agents consulted documents. Separate observed access evidence from inferred relevance. Not a prose-style or AI-writing detector.
 ---
 
 # Firecracker
@@ -52,6 +52,14 @@ Classify each document or section by role, environment, release/time, and status
 Build a topic-specific decision map. Record subject, exact claim, modality (must/may/planned), conditions/exceptions, status, source path and section/line, and authority/supersession evidence. Follow existing project precedence by topic and scope. Never choose truth by majority, freshness, version number, or universal README/ADR/code hierarchy. Code establishes observed behavior, not whether behavior satisfies accepted intent.
 
 When two applicable authoritative sources conflict without resolution, report an unresolved decision and leave conflicting policy unchanged. Continue independent findings and, in execute mode, authorized repairs. Never invent approval, decision IDs, timestamps or implementation completion. Reuse existing terminology and records rather than imposing metadata or a new documentation system.
+
+## Assess structure and discoverability
+
+In whole-project audits, assess document organization alongside semantic consistency using [references/document-structure.md](references/document-structure.md). For a focused task, restrict this to affected documents unless a broader structural review is requested. Evaluate whether agents can find relevant detail through clear entrypoints, meaningful headings, scoped links and appropriate document placement.
+
+Treat length as a diagnostic signal, not a defect or an automatic split threshold. Look for mixed responsibilities, duplicated authority, buried conditions, missing navigation and excessive fragmentation. Recognize valid central docs and code-adjacent documentation; do not impose a new layout. Report structural opportunities separately from confirmed contradictions, with concrete evidence and expected benefit. The Python inventory does not perform these structural or semantic judgments.
+
+A structural plan specifies section-to-destination mapping, gateway content to retain, link and anchor updates, authority preservation and verification. Splits/moves require authorization covering that restructuring or approval of a plan explicitly listing them; do not infer it from generic text-repair authorization. Preserve existing authorization and execute an approved restructuring plan without redundant gates. Moving AGENTS.md or equivalent instruction files can change scope or loading behavior: do not do so without establishing the relevant host rules and preserving their effect.
 
 ## Compare meaning and consequences
 
