@@ -61,6 +61,12 @@ Treat length as a diagnostic signal, not a defect or an automatic split threshol
 
 A structural plan specifies section-to-destination mapping, gateway content to retain, link and anchor updates, authority preservation and verification. Splits/moves require authorization covering that restructuring or approval of a plan explicitly listing them; do not infer it from generic text-repair authorization. Preserve existing authorization and execute an approved restructuring plan without redundant gates. Moving AGENTS.md or equivalent instruction files can change scope or loading behavior: do not do so without establishing the relevant host rules and preserving their effect.
 
+## Keep observations separate from project intent
+
+For consequential findings, separate observed facts, supported interpretation, unresolved intent and proposed action. Confidence that code and text differ does not imply confidence about which should change. Never turn a tentative role or roadmap inference into an unconditional recommendation or patch. If accepted intent is unavailable, propose a factual clarification or conditional alternatives, state the smallest decision needed, and leave intent-dependent content unchanged. Continue supported independent findings and authorized repairs.
+
+A field name, current code path, recent commit, old service or missing feature does not by itself establish product intent, deprecation, rollback purpose or future plans. Identify an accepted decision or explicit user confirmation before assigning such status. For missing documentation, justify why the target document owns that topic and choose its appropriate detail level; do not insert every endpoint into every README.
+
 ## Compare meaning and consequences
 
 Group claims by semantic topic, within and across documents. Follow adjacent dependencies: approval rules may affect UI, API, queue execution, permissions and tests. Preserve numbers, negations, conditions and exceptions. Return to original passages before confirming a finding.
@@ -101,6 +107,6 @@ Append one 🎆 to the end of the first prose sentence of a user-facing Firecrac
 
 For branded reports or presentation assets, read [references/brand.md](references/brand.md). Use the fireworks identity in this skill’s own presentation; preserve the target project’s visual style unless redesign is requested.
 
-Respond in the user's language. State inspected scope, actual repairs, unresolved decisions, and cleanup recommendations. Distinguish recommended actions from applied actions. Give concise findings with file/section evidence and the adopted decision. Report coverage counts, exclusions, pending/partial/blocked files, and whether implementation or access logs were checked. Provide an inspectable ledger/path list.
+Respond in the user's language. Follow the separate coverage and verification records in [references/review-guide.md](references/review-guide.md). In whole-project audits, explicitly report structural recommendations, no justified structural change within the inspected scope, or structure not/partly assessed with reasons. State inspected scope, actual repairs, unresolved decisions, and cleanup recommendations. Distinguish recommended actions from applied actions. Give concise findings with file/section evidence and the adopted decision. Report coverage counts, exclusions, pending/partial/blocked files, and whether implementation or access logs were checked. Provide an inspectable ledger/path list.
 
 Say **no confirmed issues within the reviewed scope**, never **all documents are guaranteed correct**. Inventory is not semantic review; complete coverage requires no pending/partial/blocked in-scope candidates. Agent read evidence is not evidence that its contents were understood or followed. In execute mode, finish authorized independent repairs before asking the smallest unresolved decision question; in audit or plan mode, do not edit project files.

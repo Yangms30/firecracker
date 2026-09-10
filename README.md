@@ -164,6 +164,8 @@ Firecracker also reviews how documentation is organized: entrypoints, headings, 
 
 This draws on [OpenAI's harness engineering example](https://openai.com/index/harness-engineering/), without imposing its file layout or line counts. [Review criteria](references/document-structure.md).
 
+Reports keep observed facts separate from unresolved project intent. Documentation coverage, implementation coverage and verification attempts are reported separately. Whole-project reports also state the structural-review result, including when no change is justified or review is incomplete.
+
 ## How it works
 
 1. **Inventory.** Count document candidates and show folders, formats and exclusions.

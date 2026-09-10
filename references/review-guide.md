@@ -36,3 +36,25 @@ Read bounded sections and retain decisions/source locations. Compare topic group
 ## Output
 
 Lead with findings/repairs and unresolved decisions. Include an evidence table and coverage: candidate count, reviewed, partial, blocked, pending, excluded files, pruned directories and traversal errors. Keep boundaries separate from file counts. Label full/partial and document-only/selectively corroborated scope. Provide proposals in audit mode, a concrete change plan in plan mode, and actual repairs in execute mode. Include document totals/folder roles, the implementation map, traced and uninspected code flows, and the distinction between static, tested and deployed evidence. Save a detailed ledger temporarily or at a requested report location, not as an unsolicited permanent project index.
+
+## Calibrate recommendations
+
+Use facts → interpretation → unresolved decision → proposed action when intent affects the repair. Mark confidence in the observation separately from confidence in the proposed resolution. Keep uncertainty attached throughout summaries, plans and edits. A high-confidence mismatch can still require a user decision.
+
+Examples of inference boundaries (not project-specific rules):
+
+- A username field does not alone establish whether identifiers are names or emails. Trace input validation and authentication. Even demonstrated name-based login does not prove email login is a future plan: it might be an unmet requirement or an abandoned idea.
+- Configuration routing traffic to one backend does not establish the purpose of another backend. Report the inspected route and contract differences; do not label the other service rollback-only without evidence. Configuration alone is not live deployment proof.
+- An implemented endpoint or new commit does not automatically make every omission a documentation defect. Check the document's role/status: a product overview may need a capability summary; an exhaustive API contract may need paths, permissions and parameters.
+
+## Separate review coverage from verification
+
+Maintain distinct records; do not mix their denominators or completion states:
+
+1. **Documentation coverage:** candidate count, role classification, reviewed/partial/blocked/pending/excluded paths and structural-review result. Explain excluded generated artifacts without elevating disposable caches into substantive documentation problems.
+2. **Implementation/configuration coverage:** inspected modules and flows, static versus observed runtime evidence, partial reads such as dependency lockfiles, and uninspected boundaries. A configuration file can serve both roles; mark the overlap instead of silently double-counting.
+3. **Verification attempts:** check/command, target environment, observed result, what it supports, and what it does not establish. Distinguish passed, failed assertion, blocked execution and not run. A Docker/tool failure is not a document-read failure or a failed business assertion.
+
+Reconcile document state counts to the declared document population and retain a path-level ledger. If inventory candidates are reclassified as implementation/configuration artifacts, show that transition. Report document-structure assessment even if no restructuring is warranted; silence is not a pass.
+
+Keep verification proportional to the finding. Reuse relevant observed results; do not run broad suites, builds or remote checks merely to fill the report. Use only task-relevant authorized environments. A page HTTP 200 establishes a response, not a functioning authenticated workflow. An anonymous HTTP 401 does not prove role authorization for all users. Matching migration lists does not prove all deployed constraints or business data are correct. Lint/build/test success supports only the inspected or exercised properties. State the limits without inventing extra blockers for supported document findings.

@@ -164,6 +164,8 @@ Firecracker 还会检查文档组织方式：入口、标题、重复规则、�
 
 参考 [OpenAI 的 harness engineering 案例](https://openai.com/index/harness-engineering/)，不强制采用其目录或行数。[审查标准](references/document-structure.md)。
 
+报告区分观察事实与尚未确认的项目意图，分别说明文档审查范围、实现检查范围和测试及运行验证结果。全项目审查还会明确结构评估结果，包括无需调整或评估不完整的情况。
+
 ## 工作方式
 
 1. **全面盘点。** 统计候选文档，展示目录、格式和排除范围。
