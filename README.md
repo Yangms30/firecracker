@@ -1,93 +1,147 @@
-![Firecracker — Different perspectives. One shared spark.](assets/hero.svg)
+<p align="center">
+  <img src="assets/hero.svg" width="960" alt="Firecracker: a shared firework above documents with different perspectives">
+</p>
 
-# Firecracker 🎆
+<h1 align="center">Firecracker</h1>
+<p align="center"><strong>Different perspectives. One shared spark.</strong></p>
+<p align="center">Keep project documents aligned as the project evolves.</p>
 
-**서로 다른 자리에서, 하나의 불꽃을 바라보다.**
-
-불꽃놀이가 시작되면 사람들은 서로 다른 자리에서 같은 불꽃을 바라봅니다. 프로젝트의 문서도 그렇습니다. 기획서는 목적을, 설계서는 구조를, 운영 문서는 실행을 이야기합니다. 서로 다른 역할을 유지하면서도, 현재 합의된 방향을 함께 바라봐야 합니다.
-
-**Firecracker**는 그 방향을 밝혀주는 Codex 스킬입니다. 문서 사이의 모순과 변경 반영 누락을 찾아 근거가 명확한 부분을 고치고, 중복되거나 쓸모를 다한 문서는 정리 후보로 제안합니다.
-
-> **Different perspectives. One shared spark.**
->
-> Find the drift. Follow the evidence.
+<p align="center">
+  <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.zh-CN.md">简体中文</a>
+</p>
 
 ---
 
-## ✨ What it illuminates
+Your spec says **A+**. Your README still says **A**. Your runbook quietly assumes **B**.
 
-- Compares requirements, plans, architecture, README, agent instructions, API guides and runbooks by topic, scope and effective status.
-- Repairs evidence-backed documentation drift when requested; an audit request remains read-only.
-- Distinguishes accepted decisions, current implementation, future proposals and historical records.
-- Recommends keep, update, merge, archive or delete-candidate actions with rationale and reference impact. Does not delete merely because a document is old or unlinked.
-- Reports observed/partial/failed agent access from supplied traces. No trace means unknown usage, not proof the agent never read a document.
-- Reports actual review coverage and unreadable or excluded material.
+Firecracker helps Codex find those disagreements, trace the decisions behind them, and repair the documents that have fallen behind. Like people watching one firework from different places, each document keeps its own perspective while following the same applicable direction.
 
-## 🚀 Light it up · Install
+[Install](#install) · [Before / after](#before--after) · [Usage](#usage) · [Limits](#limits)
 
-In Codex, ask the built-in skill installer to install this repository's root skill:
+## Install
+
+Paste this into Codex with the built-in skill installer available:
 
 ```text
-$skill-installer Install the firecracker skill from https://github.com/Yangms30/firecracker. The SKILL.md is at the repository root; include scripts, references and agents metadata.
+$skill-installer Install Firecracker from https://github.com/Yangms30/firecracker.
+SKILL.md is at the repository root. Include scripts/, references/, agents/ and assets/.
 ```
 
-Repository: [Yangms30/firecracker](https://github.com/Yangms30/firecracker).
+<details>
+<summary>Manual installation · macOS / Linux</summary>
 
-[Download ZIP](https://github.com/Yangms30/firecracker/archive/refs/heads/main.zip) to install manually.
+```bash
+mkdir -p ~/.agents/skills
+git clone https://github.com/Yangms30/firecracker.git ~/.agents/skills/firecracker
+```
 
-For manual installation, download or clone this repository and place the entire directory at one of these locations:
+Use an unused destination; if Firecracker is already installed, update that installation instead of cloning over it. For one project, copy the complete folder to `<project>/.agents/skills/firecracker/` instead.
 
-- All projects: `~/.agents/skills/firecracker/`
-- One project: `<project>/.agents/skills/firecracker/`
+Keep `SKILL.md`, `scripts/`, `references/`, `agents/` and `assets/` together. Python 3 is needed for the inventory helper. See the [official Codex skill guide](https://learn.chatgpt.com/docs/build-skills).
 
-The final entrypoint must be `firecracker/SKILL.md`. Keep `scripts/`, `references/`, `agents/` and `assets/` with it. Python 3 is required for the inventory helper; semantic analysis is performed by Codex, not by the script.
+</details>
 
-Official reference: https://learn.chatgpt.com/docs/build-skills
-
-## 🎇 Put it to work
-
-Audit without edits:
+Then open the project you want to inspect and ask:
 
 ```text
-$firecracker 이 프로젝트 전체 문서가 현재 결정과 같은 방향을 따르는지 검사해줘. 파일을 수정하지 말고 충돌 근거와 검사 범위를 보고해줘.
+$firecracker Audit this project's documents for conflicting decisions and stale guidance.
+Do not edit files. Report evidence, cleanup candidates, and actual review coverage.
 ```
 
-Audit and repair:
+## Before / after
+
+**Illustrative example:** the accepted decision now requires approval before draft generation. Upload preprocessing is still allowed.
+
+| Document | Before | After an authorized repair |
+| --- | --- | --- |
+| Accepted specification | Generate only after approval | Preserved as the governing decision |
+| API guide | Upload immediately starts drafting | Upload prepares sources; approval starts drafting |
+| Runbook | Retry drafting after every upload | Retry only an approved drafting job |
+| Old meeting notes | Proposal to draft automatically | Preserved as history |
+| Visual design guide | Typography and spacing | Preserved; no approval-flow content required |
+
+**Shared direction does not mean identical content.** Different environments, future plans and historical records can legitimately say different things.
+
+## What it checks
+
+| Area | What you get |
+| --- | --- |
+| Conflicting claims | Incompatible requirements with source locations and scope |
+| Missing change propagation | Documents that still describe an earlier accepted behavior |
+| Terminology and status | Renamed contracts, broken references, proposals presented as shipped |
+| Document lifecycle | Keep, update, merge, archive or delete-candidate recommendations |
+| Agent access evidence | Observed reads, partial reads or unknown access from supplied logs |
+| Review coverage | Reviewed, pending, partial, blocked and excluded files, plus scan boundaries |
+
+## Usage
+
+**Audit and repair**
 
 ```text
-$firecracker 프로젝트 문서를 검사하고 근거가 명확한 불일치는 수정해줘. 불필요한 문서는 삭제 후보로 추천만 해줘.
+$firecracker Inspect the project documents and fix inconsistencies supported by clear evidence.
+Recommend unnecessary documents for deletion; do not delete them.
 ```
 
-Trace an accepted change:
+**Follow an accepted change**
 
 ```text
-$firecracker 초안 생성이 '업로드 즉시 생성'에서 '사용자 승인 후 생성'으로 변경됐어. 영향받는 문서를 찾아 현재 동작과 목표 상태를 구분해서 업데이트해줘.
+$firecracker Draft generation changed from automatic-on-upload to user-approved.
+Update affected documents and distinguish the accepted target from what is implemented.
 ```
 
-Inspect past agent access:
+**Check previous agent access**
 
 ```text
-$firecracker 제공한 코딩 세션 로그를 바탕으로 각 문서의 실제 열람 증거를 확인해줘. 문서의 현재 필요성은 별도로 평가해줘.
+$firecracker Use these coding-session logs to assess document access.
+Separately evaluate whether each document is still useful to the project.
 ```
 
-## 🔭 Inside Firecracker
+These are natural-language requests, not additional CLI subcommands. Ask in English, Korean or Chinese; reports follow your language and edits preserve each source document's language.
 
-- `SKILL.md`: audit, repair and verification workflow.
-- `scripts/inventory.py`: deterministic candidate discovery and content hashes; no semantic or access inference.
-- `references/review-guide.md`: evidence and coverage ledger.
-- `references/lifecycle-and-access.md`: cleanup recommendations and access evidence rules.
-- `agents/openai.yaml`: Codex skill metadata.
-- `references/brand.md`: fireworks concept, palette and report presentation.
-- `assets/hero.svg` and `assets/icon.svg`: portable brand graphics.
+## How it works
 
-The helper can run independently:
+1. **Map the documents.** Discover candidates, content hashes, exclusions and unreadable material.
+2. **Recover the decisions.** Compare claims by topic, environment, release and authority.
+3. **Find the drift.** Check contradictions and missing propagation against original passages.
+4. **Repair and verify.** Apply requested, evidence-backed edits, then compare the affected documents again.
+
+A report connects each finding to its evidence, applicable decision, proposed or applied action, and confidence. Cleanup recommendations also describe replacement documents and references that could be affected.
+
+<details>
+<summary>Inside the skill · inventory helper</summary>
+
+| File | Purpose |
+| --- | --- |
+| [SKILL.md](SKILL.md) | Shared audit and repair instructions |
+| [scripts/inventory.py](scripts/inventory.py) | Candidate discovery and content hashes |
+| [references/review-guide.md](references/review-guide.md) | Evidence, findings and coverage |
+| [references/lifecycle-and-access.md](references/lifecycle-and-access.md) | Cleanup and agent access rules |
+| [references/brand.md](references/brand.md) | Fireworks identity and presentation |
+| [agents/openai.yaml](agents/openai.yaml) | Codex skill metadata |
+
+From the skill directory:
 
 ```bash
 python3 scripts/inventory.py /absolute/project/root > /tmp/docs-inventory.json
 ```
 
-This creates an inventory only. Documents are initially pending until an agent reviews their contents and compares applicable claims. Known documentation formats and explicit include globs are discovered; unsupported formats need manual assessment. PDF/office extraction depends on tools available to the agent.
+This inventories candidates only. Codex performs the semantic review. The scanner uses known formats and explicit include globs, skips declared dependency/build directories, and does not follow symlinks. Unusual formats need manual assessment; PDF and Office extraction depends on available tools.
 
-## What the light cannot prove
+</details>
 
-Document agreement does not prove implementation correctness. A file read does not prove comprehension or compliance. No incoming reference does not prove a document is unnecessary. An unresolved policy conflict is reported rather than settled by guessing. Cleanup recommendations are not deletion authorization.
+## Limits
+
+- Agreement between documents does not prove the implementation is correct.
+- A read event does not prove understanding or compliance. Missing logs mean unknown access.
+- Age, missing links or no observed reads alone never justify deletion.
+- Conflicting authoritative decisions remain unresolved until evidence or a decision resolves them.
+- An audit is read-only. Repair requests permit supported documentation edits; deletion needs explicit authorization.
+- Coverage is reported honestly, including unreadable files and unreviewed sections.
+
+## Languages and design
+
+[English](README.md) · [한국어](README.ko.md) · [简体中文](README.zh-CN.md)
+
+The three READMEs describe one shared skill. Runtime instructions and reference files are maintained in English; there are no separate language-specific engines. Keep examples, installation steps and limits aligned when updating translations.
+
+Presentation references: [Ponytail](https://github.com/DietrichGebert/ponytail) for clear branding and before/after storytelling; [Kill AI Slop](https://github.com/yetone/kill-ai-slop) for concrete examples and direct installation guidance. Firecracker uses its own fireworks identity and artwork. No affiliation is implied.
