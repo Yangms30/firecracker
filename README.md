@@ -12,9 +12,37 @@
 
 ---
 
-Your spec says **A+**. Your README still says **A**. Your runbook quietly assumes **B**.
+**More documents. More decisions. Are they still pointing in the same direction?**
 
-Firecracker helps Codex find those disagreements, trace the decisions behind them, and repair the documents that have fallen behind. Like people watching one firework from different places, each document keeps its own perspective while following the same applicable direction.
+As a project grows, specifications, implementation plans, API guides and runbooks accumulate. Decisions move forward, but their explanations do not always move together. A document can look perfectly reasonable on its own while contradicting the rest of the project.
+
+**Firecracker checks whether your growing documentation still follows your project's accepted direction.** It connects document claims to existing decisions and relevant implementation, shows where they diverge, and helps you review a repair plan before changes are made.
+
+Different perspectives. One shared spark. Your project defines the spark; each document keeps its own viewpoint.
+
+## When to light it up
+
+- A feature moved from **A to A+**, and you are unsure whether every affected document caught up.
+- Several people or coding agents have written documents across many folders.
+- You are returning to a project and cannot tell which guides are current, proposed or historical.
+- Before a handoff or release, you want to see conflicting instructions and missing updates.
+- You want cleanup recommendations without treating every old document as disposable.
+
+## Your direction stays yours
+
+Firecracker's role is to check consistency against the decisions already made for your project. It does not choose a new product direction, architecture or policy as part of a documentation audit.
+
+| Your concern | How the workflow addresses it |
+| --- | --- |
+| “What if it misunderstands my project?” | Shows the decision basis, scope and source passages for findings. Unclear intent is reported as unresolved, and affected content is left unchanged. You can correct the interpretation before execution. |
+| “Will it rewrite a correct document to match buggy code?” | Separates accepted requirements from observed implementation. A code defect is reported as a code defect; it is not grounds to weaken the requirement. |
+| “Will every document be forced to say the same thing?” | Preserves document roles, environment differences, future targets and historical records. Only incompatible claims within the same applicable scope are conflicts. |
+| “Will checking the project change files?” | The default audit is read-only. It reports findings and recommendations first. Changes follow a concrete plan and execution authorization. |
+| “Will old documents disappear?” | Age, missing links and absent read logs alone do not justify deletion. Cleanup candidates include their rationale and reference impact; deletion requires explicit authorization. |
+
+These are operating rules, not a guarantee of perfect understanding. Firecracker can miss context or misinterpret evidence. Its findings are reviewable proposals, with uncertainty and uninspected areas made visible. You remain the authority on unresolved project intent.
+
+**Start with a check. Review the evidence. Decide what should change.** If you explicitly ask it to plan and execute together, it proceeds within that authorization without another confirmation.
 
 [Install](#install) · [Before / after](#before--after) · [Usage](#usage) · [Limits](#limits)
 

@@ -8,6 +8,20 @@ Different perspectives. One shared spark.
 
 A specification, architecture guide and runbook see a project from different places. Keep their distinct purposes while aligning them with the accepted decisions applicable to their scope. Fireworks represent shared direction and illumination, not destruction or deletion.
 
+## Positioning and trust
+
+For maintainers who worry that growing documentation no longer follows the project's accepted direction. Lead with that recurring moment: more documents, more contributors or agents, an A-to-A+ change, a handoff or a return to an older project.
+
+The project defines the shared spark. Firecracker checks applicable consistency against existing decisions; it does not invent product direction, architecture or policy. Different document roles, environments, future targets and historical records keep their meaning.
+
+Explain the workflow before asking readers to trust a repair: read-only audit, visible source evidence and scope, concrete change plan, authorized execution and recheck. Existing execution authorization or an explicit plan-and-execute request avoids redundant approval. Unresolved intent stays unresolved and its affected content stays unchanged; supported independent work can continue.
+
+Use concrete assurances about behavior, not guaranteed accuracy. Do not claim perfect project understanding, zero risk, proof that all documents are correct, or that AI never makes a mistaken change. State that findings remain reviewable, uncertainty is visible, and the user decides unresolved intent. Code is evidence of implementation, not permission to weaken accepted requirements. Age or absent access evidence does not justify deletion.
+
+English positioning: **As your project grows, check that its documents still follow your accepted direction.**
+Korean positioning: **프로젝트가 커질수록, 문서가 여전히 합의한 방향을 따르는지 확인하세요.**
+Simplified Chinese positioning: **随着项目成长，确认文档仍然遵循已确认的方向。**
+
 ## Visual language
 
 Use a midnight sky, generous negative space, vivid radial bursts and fine trajectories. Let one dominant burst organize each composition. Avoid a field of equally loud fireworks behind body text. Document outlines retain different positions and colors, connected to the shared light.
