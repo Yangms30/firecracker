@@ -20,6 +20,16 @@ As a project grows, specifications, implementation plans, API guides and runbook
 
 Different perspectives. One shared spark. Your project defines the spark; each document keeps its own viewpoint.
 
+## Documentation is part of AI development
+
+![Selected documentation interaction categories: agent instructions and working notes 60.5%, classical technical documentation 10.6%, API references 1.3%.](assets/research-context.svg)
+
+A study reports **3,033 documentation interactions across 557 coding sessions**. These are interactions, not unique documents or reads alone; only selected categories are shown. [Source: Gao & Chen, public abstract](https://arxiv.org/abs/2608.20195).
+
+**Our takeaway: when documents guide ongoing work, keeping their decisions consistent deserves deliberate attention.** That is the maintenance problem Firecracker addresses. This research does not measure Firecracker's effectiveness or establish documentation as the most important factor.
+
+[Chart data and limitations](references/research-context.md)
+
 ## When to light it up
 
 - A feature moved from **A to A+**, and you are unsure whether every affected document caught up.
