@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Firecracker firework mark"><rect width="256" height="256" rx="56" fill="#090B18"/>
+<path d="M167.0 114.0 L214.0 114.0" stroke="#FF6338" stroke-width="7" stroke-linecap="round"/>
+<path d="M164.0 128.9 L207.5 146.9" stroke="#FFCB68" stroke-width="7" stroke-linecap="round"/>
+<path d="M155.6 141.6 L188.8 174.8" stroke="#FF57B0" stroke-width="7" stroke-linecap="round"/>
+<path d="M142.9 150.0 L160.9 193.5" stroke="#A88BFF" stroke-width="7" stroke-linecap="round"/>
+<path d="M128.0 153.0 L128.0 200.0" stroke="#60E7F0" stroke-width="7" stroke-linecap="round"/>
+<path d="M113.1 150.0 L95.1 193.5" stroke="#FF6338" stroke-width="7" stroke-linecap="round"/>
+<path d="M100.4 141.6 L67.2 174.8" stroke="#FFCB68" stroke-width="7" stroke-linecap="round"/>
+<path d="M92.0 128.9 L48.5 146.9" stroke="#FF57B0" stroke-width="7" stroke-linecap="round"/>
+<path d="M89.0 114.0 L42.0 114.0" stroke="#A88BFF" stroke-width="7" stroke-linecap="round"/>
+<path d="M92.0 99.1 L48.5 81.1" stroke="#60E7F0" stroke-width="7" stroke-linecap="round"/>
+<path d="M100.4 86.4 L67.2 53.2" stroke="#FF6338" stroke-width="7" stroke-linecap="round"/>
+<path d="M113.1 78.0 L95.1 34.5" stroke="#FFCB68" stroke-width="7" stroke-linecap="round"/>
+<path d="M128.0 75.0 L128.0 28.0" stroke="#FF57B0" stroke-width="7" stroke-linecap="round"/>
+<path d="M142.9 78.0 L160.9 34.5" stroke="#A88BFF" stroke-width="7" stroke-linecap="round"/>
+<path d="M155.6 86.4 L188.8 53.2" stroke="#60E7F0" stroke-width="7" stroke-linecap="round"/>
+<path d="M164.0 99.1 L207.5 81.1" stroke="#FF6338" stroke-width="7" stroke-linecap="round"/>
+<path d="M128 88 L135 107 L155 114 L135 121 L128 142 L121 121 L101 114 L121 107 Z" fill="#FFF0CF"/><path d="M128 169 Q142 196 121 226" fill="none" stroke="#FFCB68" stroke-width="6" stroke-linecap="round"/></svg>
