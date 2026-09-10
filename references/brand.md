@@ -41,6 +41,8 @@ Use decorative colors for marks and borders, with high-contrast body text. Indic
 
 ## Assets and copy
 
+Append one 🎆 to the end of the first prose sentence of a user-facing Firecracker audit, plan or execution report (after any heading). Do not repeat it in findings, code, source excerpts or edited project documents. Honor an explicit plain-text/no-emoji request.
+
 - `assets/hero.svg`: GitHub README cover; use relative paths so repository downloads work.
 - `assets/icon.svg`: compact radial firework mark.
 - Product: **Firecracker**. Skill name and command: **firecracker**, `$firecracker`.

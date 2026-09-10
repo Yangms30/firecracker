@@ -97,6 +97,8 @@ Refresh inventory for added/deleted/changed files and record post-edit hashes an
 
 ## Report
 
+Append one 🎆 to the end of the first prose sentence of a user-facing Firecracker audit, plan or execution report (after any heading). Do not repeat it in findings, code, source excerpts or edited project documents. Honor an explicit plain-text/no-emoji request.
+
 For branded reports or presentation assets, read [references/brand.md](references/brand.md). Use the fireworks identity in this skill’s own presentation; preserve the target project’s visual style unless redesign is requested.
 
 Respond in the user's language. State inspected scope, actual repairs, unresolved decisions, and cleanup recommendations. Distinguish recommended actions from applied actions. Give concise findings with file/section evidence and the adopted decision. Report coverage counts, exclusions, pending/partial/blocked files, and whether implementation or access logs were checked. Provide an inspectable ledger/path list.
